@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+  <!-- Basic Page Needs
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Page Information
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <title>Web Development, Deconstructed by theWebsiteKid</title>
+  <meta name="description" content="Web Development, Deconstructed by theWebsiteKid">
+  <meta name="author" content="Xavier Duncan">
+
+  <!-- w3.css and animations.css
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link rel="stylesheet" href="css/animations.css">
+
+  <!-- Fonts
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Oswald">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open Sans">
+
+  <!-- Icons (Font Awesome)
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+  <!-- Favicon
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link rel="icon" type="images/ico" href="images/favicon.ico">
+
+  <!-- Some additional styling on top of w3.css. Needs to be moved to a .css file.
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <style type="text/css">
+    #wrapper {
+      width: 100%;
+      height: 100%;
+      background-color: none;
+      text-align: center;
+      position: relative;
+      top:0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      margin: auto; }
+
+    h1,h2,h3,h4,h5,h6 {font-family: "Oswald"}
+    body {font-family: "Open Sans"}
+    a {text-decoration: none;}
+    #posts li {list-style-type: none; }
+  </style>
+
+</head>
+
+<body class="w3-light-grey">
+
+<!-- Tablet / PC Navigation bar
+–––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<div class="w3-bar w3-black w3-card-2">
+  <a href="index.html" class="w3-bar-item w3-button">theWebsiteKid<i class="fa fa-code fa-fw"></i></a>
+  <a href="javascript:void(0)" class="w3-bar-item w3-button w3-right w3-hide-medium w3-hide-large" onclick="myFunction('menu')"><i class="fa fa-bars"></i> Menu</a>
+  <a href="#" class="w3-bar-item w3-button w3-right w3-hide-small"><i class="fa fa-laptop fa-fw"></i> Tutorials</a>
+  <a href="#" class="w3-bar-item w3-button w3-right w3-hide-small"><i class="fa fa-headphones fa-fw"></i> Podcasts</a>
+  <a href="#" class="w3-bar-item w3-button w3-right w3-hide-small"><i class="fa fa-file-text fa-fw"></i> Articles</a>
+</div>
+
+<!-- Mobile Navigation Menu
+–––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<div id="menu" class="w3-bar-block w3-black w3-hide w3-hide-large w3-hide-medium">
+  <a href="#" class="w3-bar-item w3-button"><i class="fa fa-file-text fa-fw"></i> Articles</a>
+  <a href="#" class="w3-bar-item w3-button"><i class="fa fa-headphones fa-fw"></i> Podcasts</a>
+  <a href="#" class="w3-bar-item w3-button"><i class="fa fa-laptop fa-fw"></i> Tutorials</a>
+</div>
+  
+<!-- w3-content defines a container for fixed size centered content, 
+and is wrapped around the whole page content, except for the footer in this example -->
+<div class="w3-content" style="max-width:1600px">
+
+  <!-- Header
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <header>
+    <div class="w3-container w3-center w3-padding-48 w3-blue">
+      <div class="w3-row">
+        <div class="w3-col">
+          <img src="laptop.png" style="height: 100px; width: auto;" class="hatch" />
+          <h1 class="w3-xxlarge"><b><i class="fa fa-code" style="font-size: 120%;"></i>, Deconstructed.</b></h1>
+          <h4>HTML. CSS. JavaScript. React. MongoDB.</h4>
+        </div>
+      </div>
+
+      <div class="w3-row">
+        <div class="w3-col s10 m9 l10 w3-card-2">
+          <input oninput="w3.filterHTML('#posts', 'li', this.value)" placeholder="Try searching 'javascript'..." class="w3-input w3-hover-light-gray">
+        </div>
+        <div class="w3-col s2 m3 l2 w3-card-2">
+          <a href="#results" class="w3-button w3-green" style="width: 100%; padding: 9px 0 8px;"><i class="fa fa-search fa-fw pulse"></i><span class="w3-hide-small">&nbsp;Search</span></a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Grid -->
+  <div class="w3-row w3-border" id="results">
+
+    <br class="w3-hide-medium w3-hide-large">
+
+    <!-- Mobile / Tablet Topics Menu
+    –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+    <div class="w3-white w3-margin w3-card-2 w3-hide-medium w3-hide-large">
+      <button onclick="myFunction('topics')" class="w3-button w3-black w3-block"><h4><i class="fa fa-book"></i> &nbsp; Topics</h4></button>
+      <ul class="w3-ul w3-hoverable w3-white" id="topics">
+        <li class="w3-padding-16">
+          <span class="w3-large"><i class="fa fa-html5 fa-fw"></i> &nbsp; HTML</span>          </li>
+        <li class="w3-padding-16">
+          <span class="w3-large"><i class="fa fa-css3 fa-fw"></i> &nbsp; CSS</span>          </li>
+        <li class="w3-padding-16">
+          <span class="w3-large"><i class="fa fa-code fa-fw"></i> &nbsp; JavaScript</span>
+        </li>
+        <li class="w3-padding-16">
+          <span class="w3-large"><i class="fa fa-flask fa-fw"></i> &nbsp; React</span>
+        </li>
+        <li class="w3-padding-16">
+          <span class="w3-large"><i class="fa fa-database fa-fw"></i> &nbsp; MongoDB</span>
+        </li>
+      </ul>
+    </div>
+
+    <!-- Blog entries     <div class="w3-col l2 s12 w3-hide-medium w3-hide-small">
+      <div class="w3-white w3-margin">
+        <img src="boy.png" style="width: 100%">
+      </div>
+    </div>-->
+
+
+    <!-- Main Content Section
+    –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+    <div class="w3-col s12 m7 l8" style="margin-top: 8px;">
+
+      <ul class="w3-ul" id="posts">
+
+        <li>
+          <!-- Preview Card
+          –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+          <div class="w3-container w3-white w3-padding-large w3-card-2">
+            <div class="w3-center">
+              <h3>JavaScript Data Types</h3>
+              <h5><a href="#"><i class="fa fa-code fa-fw"></i> JavaScript</a> | <span class="w3-opacity">May 26, 2017</span></h5>
+            </div>
+
+            <div class="">
+              <img src="pexels-photo.jpg" alt="Girl Hat" style="width:100%" class="w3-padding-16">
+              <p><strong>JavaScript Data Types</strong> Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit.</p>
+              <p class="w3-left"><button class="w3-button w3-white w3-border" onclick="likeFunction(this)"><i class="fa fa-thumbs-up fa-fw"></i> Like</button></p>
+              <p class="w3-right"><button class="w3-button w3-blue"><i class="fa fa-eye fa-fw"></i> View</button></p>
+            </div>
+          </div>
+        </li>
+
+        <li>
+          <!-- Preview Card
+          –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+          <div class="w3-container w3-white w3-padding-large w3-card-2">
+            <div class="w3-center">
+              <h3>Data Types: Null</h3>
+              <h5><a href="#"><i class="fa fa-code fa-fw"></i> JavaScript</a> | <span class="w3-opacity">May 26, 2017</span></h5>
+            </div>
+
+            <div class="">
+              <img src="pexels-photo.jpg" alt="Girl Hat" style="width:100%" class="w3-padding-16">
+              <p><strong>JavaScript Data Types: Null</strong> Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit.</p>
+              <p class="w3-left"><button class="w3-button w3-white w3-border" onclick="likeFunction(this)"><i class="fa fa-thumbs-up fa-fw"></i> Like</button></p>
+              <p class="w3-right"><button class="w3-button w3-blue"><i class="fa fa-eye fa-fw"></i> View</button></p>
+            </div>
+          </div>
+        </li>
+
+        <li>
+          <!-- Preview Card
+          –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+          <div class="w3-container w3-white w3-padding-large w3-card-2">
+            <div class="w3-center">
+              <h3>Data Types: Arrays</h3>
+              <h5><a href="#"><i class="fa fa-code fa-fw"></i> JavaScript</a> | <span class="w3-opacity">May 26, 2017</span></h5>
+            </div>
+
+            <div class="">
+              <img src="pexels-photo.jpg" alt="Girl Hat" style="width:100%" class="w3-padding-16">
+              <p><strong>JavaScript Data Types: Arrays</strong> Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit.</p>
+              <p class="w3-left"><button class="w3-button w3-white w3-border" onclick="likeFunction(this)"><i class="fa fa-thumbs-up fa-fw"></i> Like</button></p>
+              <p class="w3-right"><button class="w3-button w3-blue"><i class="fa fa-eye fa-fw"></i> View</button></p>
+            </div>
+          </div>
+        </li>
+
+        <li>
+          <!-- Preview Card
+          –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+          <div class="w3-container w3-white w3-padding-large w3-card-2">
+            <div class="w3-center">
+              <h3>Data Types: Objects</h3>
+              <h5><a href="#"><i class="fa fa-code fa-fw"></i> JavaScript</a> | <span class="w3-opacity">May 26, 2017</span></h5>
+            </div>
+
+            <div class="">
+              <img src="pexels-photo.jpg" alt="Girl Hat" style="width:100%" class="w3-padding-16">
+              <p><strong>JavaScript Data Types: Objects</strong> Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit.</p>
+              <p class="w3-left"><button class="w3-button w3-white w3-border" onclick="likeFunction(this)"><i class="fa fa-thumbs-up fa-fw"></i> Like</button></p>
+              <p class="w3-right"><button class="w3-button w3-blue"><i class="fa fa-eye fa-fw"></i> View</button></p>
+            </div>
+          </div>
+        </li>
+
+        <li>
+          <!-- Preview Card
+          –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+          <div class="w3-container w3-white w3-padding-large w3-card-2">
+            <div class="w3-center">
+              <h3>Data Types: Booleans</h3>
+              <h5><a href="#"><i class="fa fa-code fa-fw"></i> JavaScript</a> | <span class="w3-opacity">May 25, 2017</span></h5>
+            </div>
+
+            <div class="">
+              <img src="pexels-photo.jpg" alt="Girl Hat" style="width:100%" class="w3-padding-16">
+              <p><strong>JavaScript Data Types: Booleans</strong> Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit.</p>
+              <p class="w3-left"><button class="w3-button w3-white w3-border" onclick="likeFunction(this)"><i class="fa fa-thumbs-up fa-fw"></i> Like</button></p>
+              <p class="w3-right"><button class="w3-button w3-blue"><i class="fa fa-eye fa-fw"></i> View</button></p>
+            </div>
+          </div>
+        </li>
+
+        <li>
+          <!-- Preview Card
+          –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+          <div class="w3-container w3-white w3-padding-large w3-card-2">
+            <div class="w3-center">
+              <h3>Data Types: Numbers</h3>
+              <h5><a href="#"><i class="fa fa-code fa-fw"></i> JavaScript</a> | <span class="w3-opacity">May 24, 2017</span></h5>
+            </div>
+
+            <div class="">
+              <img src="pexels-photo-3.jpg" alt="Men in Hats" style="width:100%" class="w3-padding-16">
+              <p><strong>JavaScript Data Types: Numbers</strong> Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit.</p>
+              <p class="w3-left"><button class="w3-button w3-white w3-border" onclick="likeFunction(this)"><i class="fa fa-thumbs-up fa-fw"></i> Like</button></p>
+              <p class="w3-right"><button class="w3-button w3-blue"><i class="fa fa-eye fa-fw"></i> View</button></p>
+            </div>
+          </div>
+        </li>
+
+        <li>
+          <!-- Preview Card
+          –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+          <div class="w3-container w3-white w3-padding-large w3-card-2">
+            <div class="w3-center">
+              <h3>Data Types: Strings</h3>
+              <h5><a href="#"><i class="fa fa-code fa-fw"></i> JavaScript</a> | <span class="w3-opacity">May 23, 2017</span></h5>
+            </div>
+
+            <div class="">
+              <img src="pexels-photo-3.jpg" alt="Runway" style="width:100%" class="w3-padding-16">
+              <p><strong>JavaScript Data Types: Strings</strong> Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit.</p>
+              <p class="w3-left"><button class="w3-button w3-white w3-border" onclick="likeFunction(this)"><i class="fa fa-thumbs-up fa-fw"></i> Like</button></p>
+              <p class="w3-right"><button class="w3-button w3-blue"><i class="fa fa-eye fa-fw"></i> View</button></p>
+            </div>
+          </div>
+        </li>
+
+      </ul>
+      
+      
+      <div class="w3-container w3-margin-top w3-margin-bottom">
+        <div class="w3-row">
+          <!-- "No Content Found" Notice
+          –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+          <div class="w3-col s12 l8 w3-red w3-card-2">
+            <div class="w3-container w3-padding w3-black">
+              <h4>Uh oh....</h4>
+            </div>
+            <div class="w3-container w3-red">
+              <p>It looks like we've ran out of stuff to show you. We add new content every day, so check back another time!</p>
+              <p class="w3-center">
+                <button class="w3-button w3-white w3-border" onclick="likeFunction(this)"><i class="fa fa-smile-o fa-fw w3-text-green"></i> Ok</button>
+                <button class="w3-button w3-white w3-border" onclick="likeFunction(this)"><i class="fa fa-frown-o fa-fw w3-text-red"></i> No</button>
+                <button class="w3-button w3-white w3-border" onclick="likeFunction(this)"><i class="fa fa-meh-o fa-fw w3-text-orange"></i> Idc</button>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    <!-- END MAIN CONTENT SECTION -->
+    </div>
+
+    <!-- Right Sidebar Section
+    –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+    <div class="w3-col m5 l4">
+
+      <!-- Desktop version of Topics Menu
+      –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+      <div class="w3-white w3-margin w3-card-2 w3-hide-small">
+        <div class="w3-container w3-padding w3-black">
+          <h4><i class="fa fa-book fa-fw"></i>&nbsp; Topics</h4>
+        </div>
+        <ul class="w3-ul w3-hoverable w3-white">
+          <li class="w3-padding-16">
+            <span class="w3-large"><i class="fa fa-html5 fa-fw"></i> &nbsp; HTML</span>          </li>
+          <li class="w3-padding-16">
+            <span class="w3-large"><i class="fa fa-css3 fa-fw"></i> &nbsp; CSS</span>          </li>
+          <li class="w3-padding-16">
+            <span class="w3-large"><i class="fa fa-code fa-fw"></i> &nbsp; JavaScript</span>
+          </li>
+          <li class="w3-padding-16">
+            <span class="w3-large"><i class="fa fa-flask fa-fw"></i> &nbsp; React</span>
+          </li>
+          <li class="w3-padding-16">
+            <span class="w3-large"><i class="fa fa-database fa-fw"></i> &nbsp; MongoDB</span>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Sponsor
+      –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+      <div class="w3-white w3-margin w3-card-2 w3-hide-medium w3-hide-large">
+        <div class="w3-container w3-padding w3-black">
+          <h4>Sponsor</h4>
+        </div>
+        <div class="w3-container w3-white">
+          <div class="w3-container w3-display-container w3-pink w3-section" style="height:200px">
+            <span class="w3-display-middle"><a href="http://hackleague.org" target="_blank">(<i class="fa fa-bolt fa-fw floating"></i>) HackLeague</a></span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Search Bar
+      –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+      <div class="w3-white w3-margin w3-card-2 w3-hide-small">
+        <div class="w3-container w3-padding w3-black">
+          <h4><i class="fa fa-search fa-fw"></i>&nbsp; Search</h4>
+        </div>
+        <div class="w3-container w3-blue">
+          <h6 class="w3-center">HTML. CSS. JS. React. Mongo.</h6>
+          <input oninput="w3.filterHTML('#posts', 'li', this.value)" placeholder="Try searching 'javascript'..." class="w3-input w3-hover-light-gray">
+          <a href="#results" class="w3-button w3-green w3-margin-bottom" style="width: 100%; padding: 9px 0 8px;"><i class="fa fa-search fa-fw pulse"></i><span class="w3-hide-small">&nbsp;Search</span></a>
+        </div>
+      </div>
+      
+    <!-- END RIGHT SIDE BAR -->
+    </div>
+
+  <!-- END GRID -->
+  </div>
+
+<!-- END w3-content -->
+</div>
+
+<!-- Subscribe Modal -->
+<div id="subscribe" class="w3-modal w3-animate-opacity">
+  <div class="w3-modal-content" style="padding:32px; max-width: 450px;">
+    <div class="w3-container w3-white">
+      <i onclick="document.getElementById('subscribe').style.display='none'" class="fa fa-remove w3-transparent w3-button w3-xlarge w3-right"></i>
+      <h2 class="w3-wide">Almost Done!</h2>
+      <div class="w3-light-grey w3-round-xlarge">
+        <div class="w3-container w3-round-xlarge w3-blue" style="width:90%">90%</div>
+      </div> 
+      <p><input class="w3-input w3-border" type="text" placeholder="Enter name"></p>
+      <p><input class="w3-input w3-border" type="text" placeholder="E-mail"></p>
+      <button type="button" class="w3-button w3-block w3-padding-large w3-green w3-margin-bottom" onclick="document.getElementById('subscribe').style.display='none'"><i class="fa fa-check fa-fw"></i> Subscribe</button>
+      <p class="w3-center">Thank you for trusting theWebsiteKid.com</p>
+    </div>
+  </div>
+</div>
+
+<!-- Footer
+–––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<footer class="w3-container w3-black w3-center" style="padding: 20px 0 3px;">
+  <a href="#" class="w3-button w3-black w3-padding-large w3-margin-bottom"><i class="fa fa-arrow-up w3-margin-right"></i>Back to Top</a>
+</footer>
+
+
+<!-- w3.js
+–––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<script src="https://www.w3schools.com/lib/w3.js"></script> 
+
+<!-- Additional scripts on top of w3.js. Needs to be moved to a .js file
+–––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<script>
+// Toggle between hiding and showing blog replies/comments
+function myFunction(id) {
+    var x = document.getElementById("menu");
+    if (x.className.indexOf("w3-show") == -1) {
+        x.className += " w3-show";
+    } else { 
+        x.className = x.className.replace(" w3-show", "");
+    }
+}
+
+function myFunction(id) {
+    var y = document.getElementById("topics");
+    if (y.className.indexOf("w3-show") == -1) {
+        y.className += " w3-show";
+    } else {
+        y.className = y.className.replace(" w3-show", "");
+    }
+}
+
+function likeFunction(x) {
+    x.style.fontWeight = "bold";
+    x.innerHTML = "✓ Liked";
+}
+</script>
+
+</body>
+</html>
